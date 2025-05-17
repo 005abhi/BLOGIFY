@@ -24,7 +24,7 @@ export function Createuser({ setView }) {
       });
 
       // Switch to login view
-      setView(1); // 👈 Add this line to switch to login
+      setView(0); // 👈 Add this line to switch to login
     }
   }
 
