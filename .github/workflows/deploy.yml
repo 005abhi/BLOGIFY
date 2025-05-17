@@ -1,0 +1,54 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: SSH to EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 15.206.185.169
+          username: ubuntu
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          script: |
+            set -e
+
+            sudo apt update
+
+            # Clone or pull BLOGIFY
+            if [ -d "BLOGIFY/.git" ]; then
+              echo "Updating BLOGIFY repo..."
+              cd BLOGIFY
+              git pull origin main
+              cd ..
+            else
+              echo "Cloning BLOGIFY repo..."
+              git clone https://github.com/005abhi/BLOGIFY
+              cd BLOGIFY
+
+            fi
+
+            pkill -9 node || true
+
+
+            cd frontend
+            rm -rf node_modules package-lock.json
+            npm cache clean --force
+            npm install
+            nohup npm run dev > frontend.log 2>&1 &
+
+            cd ../backend
+            rm -rf node_modules package-lock.json
+            npm cache clean --force
+            npm install
+            nohup npm run dev > backend.log 2>&1 &

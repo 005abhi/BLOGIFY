@@ -1,0 +1,56 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+}
+
+/* Scrollable blog container with hidden scrollbar */
+.blog-container {
+  max-width: 10000px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+  overflow-y: scroll; /* Enables scroll */
+  max-height: 90vh; /* Allows scroll within viewport */
+
+  /* Hide scrollbar for all browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.blog-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.blog-container button {
+  background-color: #588b76;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.blog-container h3 {
+  font-size: 20px;
+}
+
+.post-image {
+  display: block;
+  width: 60%;
+  max-width: 500px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.post-image:hover {
+  transform: scale(1.03);
+}
