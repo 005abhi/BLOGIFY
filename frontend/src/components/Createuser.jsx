@@ -22,6 +22,9 @@ export function Createuser({ setView }) {
         email: "",
         password: "",
       });
+
+      // Switch to login view
+      setView(0); // 👈 Add this line to switch to login
     }
   }
 
