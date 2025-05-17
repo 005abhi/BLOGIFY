@@ -30,7 +30,6 @@ jobs:
               echo "Updating BLOGIFY repo..."
               cd BLOGIFY
               git pull origin main
-              cd ..
             else
               echo "Cloning BLOGIFY repo..."
               git clone https://github.com/005abhi/BLOGIFY
