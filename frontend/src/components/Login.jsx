@@ -41,7 +41,7 @@ export function Login({ setView }) {
       </div>
 
       <div className="form-overlay">
-        <h2 className="form-title">Welcome bro</h2>
+        <h2 className="form-title">Welcome BACK</h2>
         <p className="form-subtitle">Log in to continue your journey!</p>
         <form onSubmit={handelSubmit}>
           <input
